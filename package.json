@@ -1,0 +1,27 @@
+{
+  "name": "eventseven",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [],
+  "license": "MIT",
+  "author": "Robert Macfie <robert@macfie.se>",
+  "homepage": "https://github.com/rmacfie/event-seven#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmacfie/event-seven.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rmacfie/event-seven/issues"
+  },
+  "scripts": {
+    "clean": "rimraf \"dist/\" \"+(src|examples)/**/*.+(js|map|d.ts)\"",
+    "dist": "npm run clean && tsc -p tsconfig.dist.json",
+    "dev": "npm run clean && tsc -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.2",
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
+  }
+}

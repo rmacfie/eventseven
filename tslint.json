@@ -1,0 +1,13 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended"],
+  "rules": {
+    "quotemark": { "options": "single" },
+    "object-literal-key-quotes": { "options": "consistent" },
+    "interface-name": { "options": "never-prefix" },
+
+    "interface-over-type-literal": false,
+    "max-classes-per-file": false,
+    "object-literal-sort-keys": false
+  }
+}
