@@ -13,6 +13,8 @@
   "bugs": {
     "url": "https://github.com/rmacfie/event-seven/issues"
   },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "clean": "rimraf \"dist/\" \"+(src|examples)/**/*.+(js|map|d.ts)\"",
     "dist": "npm run clean && tsc -p tsconfig.dist.json",
