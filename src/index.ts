@@ -1,5 +1,5 @@
-import Emitter from './Emitter';
-import { EventEmitterCtor } from './types';
+import StateImpl from './state';
+import { StateCtor } from './types';
 
 export * from './types';
-export default Emitter as EventEmitterCtor;
+export default StateImpl as StateCtor;

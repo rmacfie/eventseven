@@ -1,38 +1,27 @@
-export type RemoveListener = (
-  () => void
-);
-
-export type Listener<T> = (
-  (data: T) => void | Promise<void>
-);
-
-export interface EventRegistry {
-  'error': Error;
+export interface Subscriber<T> {
+  (value: T, oldValue?: T): void;
 }
 
-export interface EventEmitter<R extends EventRegistry> {
-  emit<E extends keyof R>(event: E, data: R[E]): Promise<void>;
-  on<E extends keyof R>(event: E, listener: Listener<R[E]>): RemoveListener;
-  once<E extends keyof R>(event: E, listener: Listener<R[E]>): RemoveListener;
-  get<E extends keyof R>(event: E): Promise<R[E]>;
-  off<E extends keyof R>(event: E, listener: Listener<R[E]>): void;
+export interface GlobalSubscriber<M extends {}> {
+  <K extends keyof M>(key: K, value: M[K], oldValue?: M[K]): void;
 }
 
-export type EventEmitterCtor = (
-  new <R extends EventRegistry>(options?: EventOptions<R>) => EventEmitter<R>
-);
-
-export type EventOptions<R extends EventRegistry> = {
-  [E in keyof Partial<R>]: EventOption<R[E]>;
-};
-
-export interface EventOption<T> {
-  stateful?: boolean;
-  initialData?: T;
+export interface ErrorSubscriber<M extends {}> {
+  <K extends keyof M>(err: any, key: K, value: M[K], oldValue?: M[K]): void;
 }
 
-export class EventDispatchError extends Error {
-  constructor(message: string, public reason?: any, public event?: string, public data?: any) {
-    super(message);
-  }
+export interface Unsubscribe {
+  (): void;
+}
+
+export interface State<M extends {}> {
+  get<K extends keyof M>(key: K): M[K] | undefined;
+  set<K extends keyof M>(key: K, value: M[K]): void;
+  on<K extends keyof M>(key: K, subscriber: Subscriber<M[K]>): Unsubscribe;
+  onAll(subscriber: GlobalSubscriber<M>): Unsubscribe;
+  onError(subscriber: ErrorSubscriber<M>): Unsubscribe;
+}
+
+export interface StateCtor {
+  new <M extends {}>(initialValues?: Partial<M>): State<M>;
 }

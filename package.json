@@ -1,18 +1,13 @@
 {
   "name": "eventseven",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "keywords": [],
   "license": "MIT",
   "author": "Robert Macfie <robert@macfie.se>",
-  "homepage": "https://github.com/rmacfie/event-seven#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rmacfie/event-seven.git"
-  },
-  "bugs": {
-    "url": "https://github.com/rmacfie/event-seven/issues"
-  },
+  "homepage": "https://github.com/rmacfie/eventseven#readme",
+  "repository": "github:rmacfie/eventseven",
+  "bugs": "https://github.com/rmacfie/eventseven/issues",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
